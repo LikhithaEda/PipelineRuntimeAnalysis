@@ -5,18 +5,35 @@ import requests
 import sys
 import pandas as pd
 from pandas import json_normalize
-import json 
+import json
+from math import ceil
 
 def getData(topic,delta):
-    startURL = "https://datagrepper.engineering.redhat.com/raw?topic=/topic/"
-    deltaURL = "&delta="
-    url = startURL + topic + deltaURL + delta
-    request =requests.get(url, verify="/etc/pki/ca-trust/source/anchors/2015-RH-IT-Root-CA.pem")
-    if request.status_code == 200: #200 means request fulfilled
-        return request.json()
-        #return request.text
-    else:
-        raise Exception("Query failed to run")
+    # startURL = "https://datagrepper.engineering.redhat.com/raw?topic=/topic/"
+    print(f"Getting data for topic {topic}")
+    messages = []
+    page = 1
+    rows_per_page = 50
+    total = None
+    while total is None or page <= ceil(total / rows_per_page):
+        url = "https://datagrepper.engineering.redhat.com/raw"
+        params = {
+            'delta': delta,
+            'topic': '/topic/' + topic,
+            'page': str(page),
+            'rows_per_page': str(rows_per_page)
+        }
+        # url = startURL + topic + deltaURL + delta
+        response = requests.get(url, params=params, verify="/etc/pki/ca-trust/source/anchors/2015-RH-IT-Root-CA.pem")
+        if response.status_code == 200: #200 means request fulfilled
+            response_json = response.json()
+            total = response_json['total']
+            print(f"Got page {page} / {ceil(total / rows_per_page)}")
+            messages += response_json['raw_messages']
+            page += 1
+        else:
+            raise Exception("Query failed to run")
+    return {'raw_messages': messages}
 
 def convertEpoch(col):
     """Convert timestamp from epoch to datetime"""
@@ -44,8 +61,10 @@ def getFirstStageData(delta):
     """VirtualTopic.eng.ci.redhat-container-image.pipeline.running: this data will tell when a new pipeline is running and the timestamp of when it started"""
     result = getData('VirtualTopic.eng.ci.redhat-container-image.pipeline.running', delta)
 
+    """
     with open('FirstStage_epoch_data.json', 'w', encoding='utf-8') as f:
         json.dump(result, f, ensure_ascii=False, indent=4)
+    """
 
     #get timestamp
     y = []
@@ -73,15 +92,17 @@ def getFirstStageData(delta):
     #print(FirstStageData_df)
     #convert to human readble time
     FirstStageData_df['startTime'] = convertEpoch(FirstStageData_df['startTime'])
-    FirstStageData_df.to_csv("FirstStageData.csv", encoding='utf-8', index=False)
+    #FirstStageData_df.to_csv("FirstStageData.csv", encoding='utf-8', index=False)
     #print(FirstStageData_df)
     return FirstStageData_df
 
 def getFinalStageData(delta):
     """VirtualTopic.eng.ci.redhat-container-image.pipeline.complete: data for when final stage execution is complete"""
     result = getData('VirtualTopic.eng.ci.redhat-container-image.pipeline.complete', delta)
+    """
     with open('FinalStage_epoch_data.json', 'w', encoding='utf-8') as f:
         json.dump(result, f, ensure_ascii=False, indent=4)
+    """
     #get timestamp
     y = []
     for index in range(0,len(result['raw_messages'])):
@@ -111,11 +132,11 @@ def getFinalStageData(delta):
     
     #convert to human readble time
     FinalStageData_df['endTime'] = convertEpoch(FinalStageData_df['endTime'])
-    FinalStageData_df.to_csv("FinalStageData.csv", encoding='utf-8', index=False)
+    #FinalStageData_df.to_csv("FinalStageData.csv", encoding='utf-8', index=False)
     return FinalStageData_df
 
 def calculateRuntime(start, end):
-  time_diff = (start - end).total_seconds() / 60 #return diff in mins
+  time_diff = (end - start).total_seconds() / 60 #return diff in mins
   return int(time_diff)
 
 def createGraph(df):
@@ -123,7 +144,7 @@ def createGraph(df):
 
 def main(argv):
     """read command line for delta configuration"""
-    delta = "19500" #getting delta from run command sys.argv[1]
+    delta = "19000" #getting delta from run command sys.argv[1]
     #get the data
     FirstStage = getFirstStageData(delta)
     FinalStage = getFinalStageData(delta)
@@ -147,7 +168,7 @@ def main(argv):
     #add column to df
     runtimes_df['run time(mins)'] = runtime
         
-    runtimes_df.to_csv("runtime.csv", encoding='utf-8', index=False)
+    #runtimes_df.to_csv("runtime.csv", encoding='utf-8', index=False)
     #print(runtimes_df)
 
 
@@ -155,4 +176,3 @@ def main(argv):
 
 if __name__ == "__main__":
    main(sys.argv[1:])
-
