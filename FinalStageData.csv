@@ -1,0 +1,26 @@
+endTime,nvr,pipelineID,nvr+pipelineID
+2021-08-20 15:43:17,e2e-container-test-product-container-8.0-2214.16294876631,396548cc-b6eb-424a-95a0-030912c61bc9,e2e-container-test-product-container-8.0-2214.16294876631396548cc-b6eb-424a-95a0-030912c61bc9
+2021-08-20 15:38:57,codeready-workspaces-rhel8-operator-metadata-container-2.11-42,84b92497-aabb-4e29-b6d4-5ec797748c9b,codeready-workspaces-rhel8-operator-metadata-container-2.11-4284b92497-aabb-4e29-b6d4-5ec797748c9b
+2021-08-20 15:38:04,e2e-container-test-product-container-8.0-2214.1629487635,fc25c57c-4803-45c4-b0bd-a17928952211,e2e-container-test-product-container-8.0-2214.1629487635fc25c57c-4803-45c4-b0bd-a17928952211
+2021-08-20 15:27:27,ose-network-tools-container-v4.9.0-202108201832.p0.git.ed0b846.assembly.stream,1edfb670-8f76-4abc-8044-6df7614aeb96,ose-network-tools-container-v4.9.0-202108201832.p0.git.ed0b846.assembly.stream1edfb670-8f76-4abc-8044-6df7614aeb96
+2021-08-20 15:21:53,ubi9-init-container-9.0.0beta-169,0223f733-a332-443e-87ba-21a3eaeb766f,ubi9-init-container-9.0.0beta-1690223f733-a332-443e-87ba-21a3eaeb766f
+2021-08-20 15:21:48,ubi9-init-container-9.0.0beta-168,fd3263ae-8667-423e-8866-3d57d3ddebd0,ubi9-init-container-9.0.0beta-168fd3263ae-8667-423e-8866-3d57d3ddebd0
+2021-08-20 15:21:41,ubi9-minimal-container-9.0.0beta-9,f015089e-c0ec-4d09-8600-5f0c8e211c79,ubi9-minimal-container-9.0.0beta-9f015089e-c0ec-4d09-8600-5f0c8e211c79
+2021-08-20 15:21:27,ubi9-minimal-container-9.0.0beta-11,b0be8bad-e15e-4e3b-b48b-d280a801436f,ubi9-minimal-container-9.0.0beta-11b0be8bad-e15e-4e3b-b48b-d280a801436f
+2021-08-20 15:21:26,ubi9-init-container-9.0.0beta-171,f8cfaf93-8eef-4228-9b62-077ec46754a8,ubi9-init-container-9.0.0beta-171f8cfaf93-8eef-4228-9b62-077ec46754a8
+2021-08-20 15:20:54,ubi9-init-container-9.0.0beta-172,d199f756-5593-4748-9ceb-f2639772204d,ubi9-init-container-9.0.0beta-172d199f756-5593-4748-9ceb-f2639772204d
+2021-08-20 15:20:53,ubi9-init-container-9.0.0beta-174,7bfb555c-e72b-4902-8ada-ea81bef65a19,ubi9-init-container-9.0.0beta-1747bfb555c-e72b-4902-8ada-ea81bef65a19
+2021-08-20 15:20:51,ubi9-init-container-9.0.0beta-175,b852f90b-3be2-426f-9406-a64d676a90ff,ubi9-init-container-9.0.0beta-175b852f90b-3be2-426f-9406-a64d676a90ff
+2021-08-20 15:19:45,istio-rhel8-operator-metadata-container-2.0.7-3,bcf7611c-7611-407a-b2ef-21e1bb014abb,istio-rhel8-operator-metadata-container-2.0.7-3bcf7611c-7611-407a-b2ef-21e1bb014abb
+2021-08-20 15:19:32,ubi9-micro-container-9.0.0beta-84,a259b799-931d-4699-94e1-1568e969be7d,ubi9-micro-container-9.0.0beta-84a259b799-931d-4699-94e1-1568e969be7d
+2021-08-20 15:15:01,ose-ovn-kubernetes-container-v4.9.0-202108201832.p0.git.10da475.assembly.stream,c4463c52-bcef-4b84-a20f-0b60af3a6839,ose-ovn-kubernetes-container-v4.9.0-202108201832.p0.git.10da475.assembly.streamc4463c52-bcef-4b84-a20f-0b60af3a6839
+2021-08-20 15:14:27,s2i-base-container-1-263,bccbc0b2-c058-40ae-a080-2b3659fdd4d6,s2i-base-container-1-263bccbc0b2-c058-40ae-a080-2b3659fdd4d6
+2021-08-20 15:14:02,ubi9-init-container-9.0.0beta-176,acd789f9-0dd2-4204-bf66-7aa41f5d849d,ubi9-init-container-9.0.0beta-176acd789f9-0dd2-4204-bf66-7aa41f5d849d
+2021-08-20 15:11:02,openshift-enterprise-tests-container-v4.9.0-202108201832.p0.git.a31b3e7.assembly.stream,185c81af-5d12-4bc2-a0da-db9d377dac42,openshift-enterprise-tests-container-v4.9.0-202108201832.p0.git.a31b3e7.assembly.stream185c81af-5d12-4bc2-a0da-db9d377dac42
+2021-08-20 15:07:28,operator-lifecycle-manager-container-v4.9.0-202108201832.p0.git.b5600cf.assembly.stream,3321d150-f8b0-4b89-8bd7-8dc2bca203a0,operator-lifecycle-manager-container-v4.9.0-202108201832.p0.git.b5600cf.assembly.stream3321d150-f8b0-4b89-8bd7-8dc2bca203a0
+2021-08-20 15:07:21,ose-baremetal-runtimecfg-container-v4.9.0-202108201832.p0.git.066cf9f.assembly.stream,a4f66370-c975-49c4-a066-578dac7aa23d,ose-baremetal-runtimecfg-container-v4.9.0-202108201832.p0.git.066cf9f.assembly.streama4f66370-c975-49c4-a066-578dac7aa23d
+2021-08-20 15:06:21,operator-registry-container-v4.9.0-202108201832.p0.git.b5600cf.assembly.stream,91ca7359-1d2a-4272-9b01-7e0ee51a52b6,operator-registry-container-v4.9.0-202108201832.p0.git.b5600cf.assembly.stream91ca7359-1d2a-4272-9b01-7e0ee51a52b6
+2021-08-20 15:05:29,cluster-monitoring-operator-container-v4.9.0-202108201832.p0.git.01b9e28.assembly.stream,56b6f6f8-5928-4c01-8eb8-8e8ba5162a2f,cluster-monitoring-operator-container-v4.9.0-202108201832.p0.git.01b9e28.assembly.stream56b6f6f8-5928-4c01-8eb8-8e8ba5162a2f
+2021-08-20 15:02:52,cpaas-test-operator-bundle-container-1.7.0-2081,45dc640f-dbd3-43b5-9c83-b42b6f27202b,cpaas-test-operator-bundle-container-1.7.0-208145dc640f-dbd3-43b5-9c83-b42b6f27202b
+2021-08-20 15:01:57,ose-azure-machine-controllers-container-v4.9.0-202108201832.p0.git.c689e78.assembly.stream,6034c7c4-e595-42ae-a4be-1ab88822da48,ose-azure-machine-controllers-container-v4.9.0-202108201832.p0.git.c689e78.assembly.stream6034c7c4-e595-42ae-a4be-1ab88822da48
+2021-08-20 14:57:31,hco-bundle-registry-container-v4.9.0-131,ebe11984-54b5-4e95-afcb-593e3cd3df73,hco-bundle-registry-container-v4.9.0-131ebe11984-54b5-4e95-afcb-593e3cd3df73
