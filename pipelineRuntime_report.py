@@ -186,7 +186,8 @@ def createBarGraph(x_col, y_col, x_label, y_label, title, filename):
     plt.xlabel(x_label)
     plt.ylabel(y_label)
     plt.title(title)
-    plt.savefig(filename)
+    plt.tight_layout()
+    plt.savefig(filename, bbox_inches="tight")
     plt.show()
 
 
@@ -235,7 +236,7 @@ def main(argv):
     Pmean_df['run time(mins)'] = Pmean_df['run time(mins)'].astype(int)
     createBarGraph(Pmean_df['pipelineName'], Pmean_df['run time(mins)'],
                    "Pipeline", "Runtime in Minutes",
-                   f"Runtime Averages for each Pipeline in Timeframe of {delta} Seconds",
+                   f"Runtime Averages for each Pipeline in\n Timeframe of {delta} Seconds",
                    "pipelineRuntimes.png")
 
     """ Create an analysis on avg runtime for each stage in pipeline"""
@@ -253,7 +254,8 @@ def main(argv):
     Sgroup_mean = stage_df.groupby('name')['runtime'].mean()
     Smean_df = Sgroup_mean.reset_index()
     Smean_df['runtime'] = Smean_df['runtime'].astype(int)
-    createBarGraph(Smean_df['name'], Smean_df['runtime'], "Stage Name", "Runtime in Seconds", f"Average Runtime for each Stage in Timeframe of {delta} seconds", "stageAvg.png")
+    createBarGraph(Smean_df['name'], Smean_df['runtime'], "Stage Name", "Runtime in Seconds",
+                   f"Average Runtime for each Stage in\n Timeframe of {delta} seconds", "stageAvg.png")
 
 
 if __name__ == "__main__":
