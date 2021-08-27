@@ -9,6 +9,7 @@ import json
 from math import ceil
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 def getData(topic, delta):
@@ -251,12 +252,31 @@ def main(argv):
     stage_df = stageComplete.filter(['pipelineName', 'name', 'runtime', 'timestampYM'], axis=1)
     stage_df[["runtime"]] = stage_df[["runtime"]].apply(pd.to_numeric)
 
-    Sgroup_mean = stage_df.groupby('name')['runtime'].mean()
+    Sgroup_mean = stage_df.groupby(['name', 'pipelineName'])['runtime'].mean()
     Smean_df = Sgroup_mean.reset_index()
     Smean_df['runtime'] = Smean_df['runtime'].astype(int)
     createBarGraph(Smean_df['name'], Smean_df['runtime'], "Stage Name", "Runtime in Seconds",
                    f"Average Runtime for each Stage in\n Timeframe of {delta} seconds", "stageAvg.png")
+    print(Sgroup_mean)
 
+    RH_registries = Smean_df[Smean_df['name'] == 'Check for approved Red Hat registries']
+    initialize = Smean_df[Smean_df['name'] == 'Initialization']
+    Metadata_prep = Smean_df[Smean_df['name'] == 'Prepare Metadata Files']
+    lintingTests = Smean_df[Smean_df['name'] == 'Run Linting Tests']
+    submitBuild_IIB = Smean_df[Smean_df['name'] == 'Submit build to IIB (Catalog initialization)']
+    ValidateOBVersion = Smean_df[Smean_df['name'] == 'Validate Operator Bundle Version Format']
+    PackageNameUnique = Smean_df[Smean_df['name'] == 'Verify packageName uniqueness']
+    Greenwave = Smean_df[Smean_df['name'] == 'Check Greenwave For Results Pass']
+    Clonedistgit = Smean_df[Smean_df['name'] == 'Clone dist-git repo']
+    functionalTest = Smean_df[Smean_df['name'] == 'Functional Tests']
+    SanityTests = Smean_df[Smean_df['name'] == 'Run Sanity Tests']
 
+    plt.figure(figsize=(10, 6))
+    sns.barplot(x="name", hue="pipelineName", y="runtime", data=Smean_df)
+    plt.xticks(rotation=45)
+    addlabels(Smean_df['name'],Smean_df['runtime'] )
+    plt.tight_layout()
+    plt.show()
+    
 if __name__ == "__main__":
     main(sys.argv[1:])
